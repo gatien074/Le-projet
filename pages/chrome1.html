@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord Patient - Hôpital </title>
+  <link rel="stylesheet" href="../css/chrome1.css">
+</head>
+<body>
+  <header>
+    <h1>BIENVENUE DANS VOTRE ESPACE</h1>
+  </header>
+
+  <div class="container">
+    <div class="dashboard">
+      <div class="card">
+        <h2>Prochains Rendez-vous</h2>
+        <ul class="appointment-list">
+          <li>
+            <strong>15 Mai 2024, 10:00</strong><br>
+            Dr. Martin - Consultation Cardiologie
+          </li>
+          <li>
+            <strong>22 Mai 2024, 14:30</strong><br>
+            Dr. Dubois - Suivi Orthopédique
+          </li>
+          <li>
+            <strong>5 Juin 2024, 11:15</strong><br>
+            Mme. Laurent - Séance de Kinésithérapie
+          </li>
+        </ul>
+        <button onclick="showModal('appointment')">Prendre un rendez-vous</button>
+      </div>
+
+      <div class="card">
+        <h2>Services à Distance</h2>
+        <div class="service-grid">
+          <div class="service-item" onclick="showModal('teleconsultation')">Téléconsultation</div>
+          <div class="service-item" onclick="showModal('results')">Résultats d'Analyses</div>
+          <div class="service-item" onclick="showModal('prescriptions')">Ordonnances</div>
+          <div class="service-item" onclick="showModal('treatment')">Suivi de Traitement</div>
+          <div class="service-item" onclick="showModal('upload')">Téléverser Documents</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Messagerie</h2>
+        <p>Vous avez 2 nouveaux messages :</p>
+        <ul id="message-list">
+          <li>Rappel de votre rendez-vous de demain</li>
+          <li>Résultats d'analyses disponibles</li>
+        </ul>
+        <button onclick="showAllMessages()">Voir tous les messages</button>
+      </div>
+    </div>
+
+    <div class="notification">
+      Rappel : N'oubliez pas votre rendez-vous demain à 10:00 avec Dr. Martin en Cardiologie.
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script>
+    // Simulation de mise à jour en temps réel
+    setInterval(() => {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      document.querySelector('header').innerHTML = `
+        <h1>BIENVENUE DANS VOTRE ESPACE</h1>
+        <p>Dernière mise à jour : ${now.toLocaleDateString('fr-FR', options)}</p>
+      `;
+    }, 60000);
+
+    // Fonction pour ajouter un nouveau rendez-vous (simulation)
+    function addAppointment(date, doctor, service) {
+      const list = document.querySelector('.appointment-list');
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${date}</strong><br>${doctor} - ${service}`;
+      list.appendChild(li);
+    }
+
+    // Simulation d'ajout de rendez-vous après 10 secondes
+    setTimeout(() => {
+      addAppointment('12 Juillet 2024, 09:45', 'Dr. Petit', 'Consultation Dermatologie');
+    }, 10000);
+
+    // Fonction pour afficher la modal
+    function showModal(type) {
+      const modal = document.getElementById('modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalContent = document.getElementById('modal-content');
+
+      switch(type) {
+        case 'appointment':
+          modalTitle.textContent = 'Prendre un rendez-vous';
+          modalContent.innerHTML = `
+            <form onsubmit="event.preventDefault(); bookAppointment();">
+              <label for="date">Date :</label>
+              <input type="date" id="date" required><br><br>
+              <label for="time">Heure :</label>
+              <input type="time" id="time" required><br><br>
+              <label for="service">Service :</label>
+              <select id="service" required>
+                <option value="">Choisissez un service</option>
+                <option value="cardiologie">Cardiologie</option>
+                <option value="orthopédie">Orthopédie</option>
+                <option value="dermatologie">Dermatologie</option>
+              </select><br><br>
+              <button type="submit">Confirmer le rendez-vous</button>
+            </form>
+          `;
+          break;
+        case 'teleconsultation':
+          modalTitle.textContent = 'Téléconsultation';
+          modalContent.innerHTML = `
+            <p>Prochaine téléconsultation disponible : Demain à 14:00</p>
+            <button onclick="bookTeleconsultation()">Réserver une téléconsultation</button>
+          `;
+          break;
+        case 'results':
+          modalTitle.textContent = 'Résultats d\'Analyses';
+          modalContent.innerHTML = `
+            <ul>
+              <li>Analyse de sang (05/05/2024) - <a href="#">Télécharger le PDF</a></li>
+              <li>Radiographie du thorax (28/04/2024) - <a href="#">Voir l'image</a></li>
+            </ul>
+          `;
+          break;
+        case 'prescriptions':
+          modalTitle.textContent = 'Ordonnances';
+          modalContent.innerHTML = `
+            <ul>
+              <li>Ordonnance du 10/05/2024 - Dr. Martin - <a href="#">Télécharger le PDF</a></li>
+              <li>Ordonnance du 22/04/2024 - Dr. Dubois - <a href="#">Télécharger le PDF</a></li>
+            </ul>
+          `;
+          break;
+        case 'treatment':
+          modalTitle.textContent = 'Suivi de Traitement';
+          modalContent.innerHTML = `
+            <h3>Traitement en cours :</h3>
+            <p>Antibiotique : 3 fois par jour pendant 7 jours</p>
+            <p>Progrès : 4/7 jours</p>
+            <button onclick="updateTreatmentProgress()">Marquer une prise</button>
+          `;
+          break;
+        case 'upload':
+          modalTitle.textContent = 'Téléverser Documents';
+          modalContent.innerHTML = `
+            <p>Sélectionnez les documents à téléverser :</p>
+            <input type="file" id="file-upload" multiple onchange="handleFileUpload(this.files)">
+            <label for="file-upload" class="file-upload-label">Choisir des fichiers</label>
+            <ul id="upload-list"></ul>
+          `;
+          break;
+      }
+
+      modal.style.display = 'block';
+    }
+
+    // Fonction pour fermer la modal
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
+
+    // Fermer la modal si on clique en dehors
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    // Fonction pour réserver un rendez-vous
+    function bookAppointment() {
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const service = document.getElementById('service').value;
+      
+      addAppointment(`${date}, ${time}`, 'Dr. Nouveau', `Consultation ${service}`);
+      closeModal();
+      alert('Rendez-vous confirmé !');
+    }
+
+    // Fonction pour réserver une téléconsultation
+    function bookTeleconsultation() {
+      closeModal();
+      alert('Téléconsultation réservée pour demain à 14:00');
+    }
+
+    // Fonction pour mettre à jour le progrès du traitement
+    function updateTreatmentProgress() {
+      closeModal();
+      alert('Prise de médicament enregistrée. Continuez votre traitement comme prescrit.');
+    }
+
+    // Fonction pour afficher tous les messages
+    function showAllMessages() {
+      const messageList = document.getElementById('message-list');
+      messageList.innerHTML = `
+        <li>Rappel de votre rendez-vous de demain</li>
+        <li>Résultats d'analyses disponibles</li>
+        <li>Confirmation de votre téléconsultation</li>
+        <li>Rappel : renouvellement d'ordonnance nécessaire</li>
+        <li>Information sur les nouveaux services de l'hôpital</li>
+      `;
+    }
+
+    // Fonction pour gérer le téléversement de fichiers
+    function handleFileUpload(files) {
+      const uploadList = document.getElementById('upload-list');
+      uploadList.innerHTML = '';
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${file.name}
+          <div class="upload-progress">
+            <div class="upload-progress-bar"></div>
+          </div>
+        `;
+        uploadList.appendChild(li);
+
+        // Simuler le téléversement
+        simulateUpload(li.querySelector('.upload-progress-bar'));
+      }
+    }
+
+    // Fonction pour simuler le téléversement
+    function simulateUpload(progressBar) {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        progressBar.style.width = `${progress}%`;
+        if (progress >= 100) {
+          clearInterval(interval);
+        }
+      }, 500);
+    }
+  </script>
+</body>
+</html>

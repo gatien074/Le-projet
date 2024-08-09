@@ -1,0 +1,265 @@
+/* reset css  */
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body, html {
+     margin: 0;
+     padding: 0;
+     height: 100%;
+      width: 100%;
+     
+    
+  }
+  
+ 
+
+
+/* header */
+header {
+  max-width: 100%;
+  height: 89px;
+}
+/* partie nav  */
+nav {
+  display: flex;
+  margin-top: 25px;
+  margin: 23px;
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 2px 1px #06b136;
+  /* border-bottom:  1px solid #000; */
+  background-color: rgba(255, 255, 255, 0.948);
+}
+/* logo  */
+.logo {
+  display: flex;
+  gap: 23px;
+}
+/* img nave  */
+.logo img {
+  margin-left: 45px;
+  align-items: center;
+  width: 60px;
+  height: 30px;
+  box-shadow: 0px px 0px 0px;
+}
+/* nave p  */
+.logo .text-logo {
+  font-family: "roboto mono";
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  position: relative;
+  right: 35px;
+  color: #06b136;
+}
+/* liens nav  */
+nav .link {
+  display: flex;
+  font-family: "roboto mono";
+  font-size: 15px;
+  margin-right: 45px;
+  font-weight: bold;
+  margin: 5px;
+  align-items: center;
+}
+.link_nave {
+  color: #0839d8;
+  text-decoration: none;
+  margin: 15px;
+}
+
+.link_nave:hover {
+  color: #06b136;
+  box-shadow: #06b136;
+}
+
+/* button du haut  */
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 35px;
+  border: 1px solid #06b136;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #06b136;
+  font-size: 12px;
+}
+button:hover {
+  background-color: #3c2edf;
+  box-shadow: #7baca0;
+  color: #fff;
+  box-shadow: 1px 1px 2px 2px;
+}
+
+
+/* main  */
+.vidéo_main{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ensemble-barre {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+
+
+
+
+  
+  h1 {
+    font-family: "roboto mono";
+    text-align: center;
+    font-size: 36px;
+    padding-top: 123px;
+  }
+  /* barre de recherche   */
+  .ensemble-barre {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .barre {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 86px;
+  }
+  
+  .inputs {
+    padding: 15px;
+    width: 700px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #06b136;
+    transition: transform 2ms;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+  
+  .input {
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    background-color: #4551ef;
+    font-family: "roboto mono";
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .input:hover {
+    background-color: #00000035;
+    transition: 5ms;
+  }
+  
+  input::placeholder {
+    font-family: "roboto mono";
+    color: #000000;
+    padding: 12px;
+  }
+  
+  /* partie section  */
+  .ensemble-section{
+    display: flex;
+  }
+  .set_image{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    margin-left: 123px;
+   
+  }
+ 
+  
+  /* partie footer  */
+  
+  footer {
+    margin-top: 100px;
+    display: flex;
+    width: 100%;
+    height: 200px;
+    background-color: #06b136;
+    justify-content: space-between;
+  }
+  
+  .social {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .réseaux {
+    width: 45px;
+    height: 23px;
+    margin-right: 23px;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.2);
+      transition: 2ms;
+    }
+  }
+  
+  .img3 {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    padding-top: 30px;
+    margin-left: 25px;
+  }
+  
+  .footer_p {
+    font-family: "roboto mono";
+    color: white;
+    padding-top: 145px;
+    font-size: 12px;
+    position: relative;
+    right: 100px;
+    margin-right: 200px;
+  }
+  .link0 {
+    color: #fff;
+    text-decoration: none;
+    padding-top: 23px;
+    font-size: 12px;
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+    top: 123px;
+  }
+  .link0:hover {
+    text-decoration: underline;
+  }
+  
+  

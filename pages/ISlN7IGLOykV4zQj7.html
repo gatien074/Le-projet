@@ -1,0 +1,468 @@
+<html><head><base href="https://websim.ai/admin-dashboard/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Administrateur - Système de Rendez-vous en Ligne</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --primary-green: #3A8A3F;
+    --light-green: #5FAD63;
+    --dark-green: #2C682F;
+    --white: #FFFFFF;
+    --black: #000000;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+    color: #333;
+  }
+  .container {
+    display: flex;
+    min-height: 100vh;
+  }
+  .sidebar {
+    width: 250px;
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 20px;
+  }
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  .header {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    color: var(--black);
+    margin: 0;
+  }
+  .card {
+    background-color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--light-green);
+  }
+  .card h2 {
+    color: var(--black);
+    margin-top: 0;
+  }
+  .menu-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .menu-item:hover {
+    background-color: var(--primary-green);
+  }
+  .menu-item.active {
+    background-color: var(--primary-green);
+  }
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    flex: 1;
+    margin-right: 20px;
+    background-color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--light-green);
+  }
+  .stat-card:last-child {
+    margin-right: 0;
+  }
+  .stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--black);
+  }
+  .stat-label {
+    color: var(--dark-green);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid var(--light-green);
+  }
+  th {
+    background-color: var(--light-green);
+    color: var(--white);
+  }
+  .content-section {
+    display: none;
+  }
+  .content-section.active {
+    display: block;
+  }
+  button {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: var(--dark-green);
+  }
+  input[type="text"], input[type="email"], input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--light-green);
+    border-radius: 4px;
+  }
+  .sidebar h2 {
+    color: var(--white);
+    margin-top: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Admin Dashboard</h2>
+      <div class="menu-item active" data-target="dashboard">Tableau de bord</div>
+      <div class="menu-item" data-target="appointments">Rendez-vous</div>
+      <div class="menu-item" data-target="clients">Clients</div>
+      <div class="menu-item" data-target="services">Services</div>
+      <div class="menu-item" data-target="settings">Paramètres</div>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <h1 id="page-title">Tableau de bord</h1>
+      </div>
+      
+      <!-- Dashboard Section -->
+      <div id="dashboard" class="content-section active">
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number">152</div>
+            <div class="stat-label">Rendez-vous aujourd'hui</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">1,280</div>
+            <div class="stat-label">Rendez-vous ce mois</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">89%</div>
+            <div class="stat-label">Taux d'occupation</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4.8/5</div>
+            <div class="stat-label">Satisfaction client</div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Rendez-vous récents</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody id="recent-appointments">
+              <!-- Le contenu sera généré dynamiquement par JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h2>Statistiques des rendez-vous</h2>
+          <canvas id="appointmentChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Appointments Section -->
+      <div id="appointments" class="content-section">
+        <div class="card">
+          <h2>Liste des rendez-vous</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="appointments-list">
+              <!-- Le contenu sera généré dynamiquement par JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Clients Section -->
+      <div id="clients" class="content-section">
+        <div class="card">
+          <h2>Liste des clients</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jean Dupont</td>
+                <td>jean.dupont@email.com</td>
+                <td>01 23 45 67 89</td>
+                <td><button onclick="editClient(1)">Modifier</button> <button onclick="deleteClient(1)">Supprimer</button></td>
+              </tr>
+              <tr>
+                <td>Marie Martin</td>
+                <td>marie.martin@email.com</td>
+                <td>01 98 76 54 32</td>
+                <td><button onclick="editClient(2)">Modifier</button> <button onclick="deleteClient(2)">Supprimer</button></td>
+              </tr>
+              <tr>
+                <td>Pierre Lefebvre</td>
+                <td>pierre.lefebvre@email.com</td>
+                <td>01 11 22 33 44</td>
+                <td><button onclick="editClient(3)">Modifier</button> <button onclick="deleteClient(3)">Supprimer</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Services Section -->
+      <div id="services" class="content-section">
+        <div class="card">
+          <h2>Liste des services</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Durée</th>
+                <th>Prix</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Consultation générale</td>
+                <td>30 min</td>
+                <td>32 750 FCFA</td>
+                <td><button onclick="editService(1)">Modifier</button> <button onclick="deleteService(1)">Supprimer</button></td>
+              </tr>
+              <tr>
+                <td>Soins dentaires</td>
+                <td>1 heure</td>
+                <td>65 500 FCFA</td>
+                <td><button onclick="editService(2)">Modifier</button> <button onclick="deleteService(2)">Supprimer</button></td>
+              </tr>
+              <tr>
+                <td>Examen de la vue</td>
+                <td>45 min</td>
+                <td>49 125 FCFA</td>
+                <td><button onclick="editService(3)">Modifier</button> <button onclick="deleteService(3)">Supprimer</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Settings Section -->
+      <div id="settings" class="content-section">
+        <div class="card">
+          <h2>Paramètres du site</h2>
+          <form id="settingsForm">
+            <label for="siteName">Nom du site:</label>
+            <input type="text" id="siteName" name="siteName" value="Système de Rendez-vous en Ligne"><br><br>
+            <label for="siteEmail">Email de contact:</label>
+            <input type="email" id="siteEmail" name="siteEmail" value="contact@rdv-online.com"><br><br>
+            <label for="sitePhone">Téléphone de contact:</label>
+            <input type="tel" id="sitePhone" name="sitePhone" value="01 23 45 67 89"><br><br>
+            <button type="submit">Enregistrer les modifications</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Fonction pour générer une date aléatoire dans l'année en cours
+    function randomDate() {
+      const start = new Date(new Date().getFullYear(), 0, 1);
+      const end = new Date(new Date().getFullYear(), 11, 31);
+      return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
+
+    // Fonction pour formater la date
+    function formatDate(date) {
+      return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+    }
+
+    // Fonction pour convertir EUR en FCFA
+    function convertToFCFA(euroAmount) {
+      const exchangeRate = 655.957; // Taux de change fixe entre l'euro et le FCFA
+      return Math.round(euroAmount * exchangeRate);
+    }
+
+    // Données pour les rendez-vous récents
+    const recentAppointments = [
+      { client: "Jean Dupont", service: "Consultation générale", date: randomDate(), status: "Confirmé" },
+      { client: "Marie Martin", service: "Soins dentaires", date: randomDate(), status: "En attente" },
+      { client: "Pierre Lefebvre", service: "Examen de la vue", date: randomDate(), status: "Confirmé" }
+    ];
+
+    // Générer le contenu des rendez-vous récents
+    const recentAppointmentsTable = document.getElementById('recent-appointments');
+    recentAppointments.forEach(appointment => {
+      const row = recentAppointmentsTable.insertRow();
+      row.insertCell(0).textContent = appointment.client;
+      row.insertCell(1).textContent = appointment.service;
+      row.insertCell(2).textContent = formatDate(appointment.date);
+      row.insertCell(3).textContent = appointment.status;
+    });
+
+    // Données pour la liste complète des rendez-vous
+    const allAppointments = [
+      { id: 1, client: "Jean Dupont", service: "Consultation générale", date: randomDate(), status: "Confirmé" },
+      { id: 2, client: "Marie Martin", service: "Soins dentaires", date: randomDate(), status: "En attente" },
+      { id: 3, client: "Pierre Lefebvre", service: "Examen de la vue", date: randomDate(), status: "Confirmé" },
+      { id: 4, client: "Sophie Dubois", service: "Consultation générale", date: randomDate(), status: "Confirmé" },
+      { id: 5, client: "Luc Moreau", service: "Soins dentaires", date: randomDate(), status: "En attente" }
+    ];
+
+    // Générer le contenu de la liste complète des rendez-vous
+    const appointmentsList = document.getElementById('appointments-list');
+    allAppointments.forEach(appointment => {
+      const row = appointmentsList.insertRow();
+      row.insertCell(0).textContent = appointment.client;
+      row.insertCell(1).textContent = appointment.service;
+      row.insertCell(2).textContent = formatDate(appointment.date);
+      row.insertCell(3).textContent = appointment.status;
+      const actionsCell = row.insertCell(4);
+      actionsCell.innerHTML = `<button onclick="editAppointment(${appointment.id})">Modifier</button> <button onclick="deleteAppointment(${appointment.id})">Supprimer</button>`;
+    });
+
+    // Données pour le graphique
+    const ctx = document.getElementById('appointmentChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+        datasets: [{
+          label: 'Nombre de rendez-vous',
+          data: [65, 59, 80, 81, 56, 55, 40],
+          fill: false,
+          borderColor: '#3A8A3F',
+          backgroundColor: '#5FAD63',
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Gestion de la navigation
+    const menuItems = document.querySelectorAll('.menu-item');
+    const contentSections = document.querySelectorAll('.content-section');
+    const pageTitle = document.getElementById('page-title');
+
+    menuItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const target = this.getAttribute('data-target');
+        
+        // Mise à jour des classes actives
+        menuItems.forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Affichage de la section correspondante
+        contentSections.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === target) {
+            section.classList.add('active');
+          }
+        });
+
+        // Mise à jour du titre de la page
+        pageTitle.textContent = this.textContent;
+      });
+    });
+
+    // Fonctions pour les actions sur les rendez-vous
+    function editAppointment(id) {
+      alert(`Édition du rendez-vous ${id}`);
+    }
+
+    function deleteAppointment(id) {
+      if (confirm(`Êtes-vous sûr de vouloir supprimer le rendez-vous ${id} ?`)) {
+        alert(`Rendez-vous ${id} supprimé`);
+      }
+    }
+
+    // Fonctions pour les actions sur les clients
+    function editClient(id) {
+      alert(`Édition du client ${id}`);
+    }
+
+    function deleteClient(id) {
+      if (confirm(`Êtes-vous sûr de vouloir supprimer le client ${id} ?`)) {
+        alert(`Client ${id} supprimé`);
+      }
+    }
+
+    // Fonctions pour les actions sur les services
+    function editService(id) {
+      alert(`Édition du service ${id}`);
+    }
+
+    function deleteService(id) {
+      if (confirm(`Êtes-vous sûr de vouloir supprimer le service ${id} ?`)) {
+        alert(`Service ${id} supprimé`);
+      }
+    }
+
+    // Gestion du formulaire de paramètres
+    document.getElementById('settingsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Paramètres enregistrés !');
+    });
+
+    // Conversion des prix en FCFA dans la section des services
+    const serviceRows = document.querySelectorAll('#services tbody tr');
+    serviceRows.forEach(row => {
+      const priceCell = row.cells[2];
+      const priceInEuro = parseFloat(priceCell.textContent);
+      const priceInFCFA = convertToFCFA(priceInEuro);
+      priceCell.textContent = `${priceInFCFA.toLocaleString('fr-FR')} FCFA`;
+    });
+  </script>
+</body></html>

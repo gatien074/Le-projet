@@ -1,0 +1,238 @@
+/* reset css  */
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: linear-gradient(#c83535, #06b136, #8fb300);
+  }
+  
+  header {
+    width: 100%;
+    /* background-color: #00b383; */
+  }
+  
+  .nav_header {
+    font-family: "roboto mono";
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+    justify-content: space-between;
+  }
+  /* logo  */
+  .id {
+    width: 160px;
+    height: 60px;
+  }
+  .content {
+    position: relative;
+    right: 45px;
+    font-size: 23px;
+    color: #fff;
+  }
+  
+  /* liens  */
+  
+  .link1 {
+    display: flex;
+    text-decoration: none;
+    position: relative;
+    left: 400px;
+    color: #fff;
+    font-size: 12px;
+  }
+  
+  .link2 {
+    display: flex;
+    text-decoration: none;
+    position: relative;
+    right: 90px;
+    color: #fff;
+    font-size: 12px;
+  }
+  .text {
+    display: flex;
+  }
+  .main_input {
+    background-color: #06b136;
+    font-family: "roboto mono";
+    padding-top: 123px;
+    background: linear-gradient(#000, #4b4bd0, #06b136);
+    margin: 25%;
+    position: relative;
+    bottom: 250px;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 35px;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.02);
+      transition: 2ms;
+    }
+  }
+  /* buttons  */
+  .cta {
+    display: flex;
+    margin: auto;
+    width: 50%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    border: 1px solid #06b136;
+    cursor: pointer;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.1);
+      transition: 2ms;
+    }
+  }
+  
+  button {
+    display: flex;
+    margin: auto;
+    width: 50%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    border: 1px solid #06b136;
+    cursor: pointer;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.1);
+      transition: 2ms;
+    }
+  }
+  /* text */
+  h4 {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  /* partie image  */
+  .containe {
+    font-size: 18px;
+    font-family: "roboto mono";
+    padding-top: 123px;
+    position: relative;
+    bottom: 500px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+  }
+  .section_img {
+    position: relative;
+    bottom: 123px;
+    width: 500px;
+    height: 300px;
+    border-radius: 15px;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.1);
+      transition: 2ms;
+    }
+  }
+  .section2 {
+    position: relative;
+    bottom: 80px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+  }
+  
+  .section_img2 {
+    position: relative;
+    bottom: 450px;
+    width: 500px;
+    height: 300px;
+    border-radius: 15px;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.1);
+      transition: 2ms;
+    }
+  }
+  hr {
+    margin: 86px;
+  }
+  .text0 {
+    position: relative;
+    bottom: 100px;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .test1 {
+    font-family: "roboto mono";
+    position: relative;
+    bottom: 400px;
+    text-align: center;
+    font-size: 18px;
+  }
+  /* partie footer  */
+  
+  footer {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(#07110e, #115dc1, #07110e);
+    justify-content: space-between;
+  }
+  
+  .social {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+    right: 400px;
+  }
+  
+  .réseaux {
+    width: 45px;
+    height: 23px;
+    margin-right: 12px;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.2);
+      transition: 2ms;
+    }
+  }
+  
+  .img3 {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    padding-top: 30px;
+    margin-left: 25px;
+  }
+  
+  .footer_p {
+    font-family: "roboto mono";
+    color: white;
+    padding-top: 145px;
+    font-size: 12px;
+    position: relative;
+    right: 150px;
+    margin-right: 200px;
+  }
+  .link0 {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 12px;
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+    right: 145px;
+    top: 120px;
+  }
+  .link0:hover {
+    text-decoration: underline;
+  }
+  
