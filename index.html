@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
+    <linknpm 
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet" />
+      <script src="./index.js"></script>
   </head>
   <body>
     <header>
@@ -27,6 +28,7 @@
           <a class="link_nave" href="./pages/hopitaux.html">HOPITAUX</a>
           <a class="link_nave" href="./pages/services.html">SERVICES</a>
           <a class="link_nave" href="./pages/contact.html">CONTACT</a>
+          <img class="im2" src="./asset/image/align-justify.svg" alt="">
       
        <ul class="none">
           <li class="dashboard">DASHBOARD</li>
@@ -44,7 +46,7 @@
       <h1><strong>MEDCONNECT</strong></h1>
       <p>Planifier des rendez-vous et accéder aux services médicaux et <br> des soins à porté de main,en un seul clic</p>
       <div class="parent_cta">
-        <a class="rendez" href="./pages/formulaire.html"><button class="button" type="button">Se connecter</button></a>
+        <a class="rendez" href="./pages/formulaire.html"><button id="mybutton" class="button" type="button">S'inscrire</button></a>
         <!-- <a class="rendez" href="./pages/formulaire.html"><button class="button2" type="button">Inscrivez-vous</button></a> -->
       </div>
     </main>
@@ -69,19 +71,19 @@
 
      <div class="parent_section">
       <h6>Cardiologie</h6>
-      <img class="text1" src="./asset/image/heart-pulse-fill.svg" alt="">
+      <img src="./asset/image/cardiologie.png" alt="">
       <button class="button_services">En savoir plus</button>
     </div>
     
     <div class="parent_section">
       <h6>chirurgie dentaire</h6>
-      <p class="text1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit amet ipsam tempore pariatur atque magni eveniet, recusandae ducimus veniam, quam obcaecati incidunt voluptatibus asperiores debitis facere accusamus dicta ipsa quod.</p>
+       <img src="./asset/image/anesthesique.png" alt="">
       <button  class="button_services">En savoir plus</button>
     </div>
 
     <div>
       <h6>Maternité</h6>
-      <p class="text1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit amet ipsam tempore pariatur atque magni eveniet, recusandae ducimus veniam, quam obcaecati incidunt voluptatibus asperiores debitis facere accusamus dicta ipsa quod.</p>
+      <img src="./asset/image/soins-de-maternite.png" alt="">
       <button  class="button_services">En savoir plus</button>
     </div>
 
@@ -129,7 +131,7 @@
 
     <img class="doc" src="./asset/image/chir.jpg" alt="">
   </section>
-  <section class="formulaire">
+  <section class="formulaire ">
     <div class="contact-form">
       <h2 class="com">Contactez-nous</h2>
       <form id="contactForm">
@@ -162,6 +164,6 @@
         </div>
     </div>
     </footer>
-    <script type="module" src="./main.js"></script>
+   
   </body>
 </html> 
