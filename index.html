@@ -11,7 +11,6 @@
     <linknpm 
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet" />
-      <script src="./index.js"></script>
   </head>
   <body>
     <header>
@@ -20,7 +19,7 @@
         <!-- partie logoipsum-269  -->
         <div class="logo">
           <img src="./asset/image/logoipsum-269.svg" alt="logo" />
-          <p class="text-logo"><strong>MedConnect</strong></p>
+          <p class="text-logo">MedConnect</p>
         </div>
         <!-- partie liens  -->
         <div class="link">
@@ -28,7 +27,6 @@
           <a class="link_nave" href="./pages/hopitaux.html">HOPITAUX</a>
           <a class="link_nave" href="./pages/services.html">SERVICES</a>
           <a class="link_nave" href="./pages/contact.html">CONTACT</a>
-          <img class="im2" src="./asset/image/align-justify.svg" alt="">
       
        <ul class="none">
           <li class="dashboard">DASHBOARD</li>
@@ -37,22 +35,22 @@
             <li class="suivi">Patient</li> 
           </ul>
           </ul> 
-         <a class="link_nave" href="./pages/formulaire.html"> <button id="my-button">Se connecter</button></a>
+         <a class="links_nave" href="./pages/formulaire.html"> <button id="my-button">Se connecter</button></a>
         </div>
       </nav>
     </header>
     <!-- partie main  -->
     <main>
-      <h1><strong>MEDCONNECT</strong></h1>
+      <h1>MEDCONNECT</h1>
       <p>Planifier des rendez-vous et accéder aux services médicaux et <br> des soins à porté de main,en un seul clic</p>
       <div class="parent_cta">
         <a class="rendez" href="./pages/formulaire.html"><button id="mybutton" class="button" type="button">S'inscrire</button></a>
         <!-- <a class="rendez" href="./pages/formulaire.html"><button class="button2" type="button">Inscrivez-vous</button></a> -->
       </div>
     </main>
-
+  
     <!-- première section  -->
-    <section class="section1">
+    <section class="section1 mt-60">
       
     <div class="parent_titre1">
       <h4 class="titre1">À propos de nous</h4>
@@ -81,7 +79,7 @@
       <button  class="button_services">En savoir plus</button>
     </div>
 
-    <div>
+    <div class="parent_section">
       <h6>Maternité</h6>
       <img src="./asset/image/soins-de-maternite.png" alt="">
       <button  class="button_services">En savoir plus</button>
@@ -89,20 +87,18 @@
 
      <div class="parent_section">
       <h6>Pédiatrie</h6>
-      <p class="text1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit amet ipsam tempore pariatur atque magni eveniet, recusandae ducimus veniam, quam obcaecati incidunt voluptatibus asperiores debitis facere accusamus dicta ipsa quod.</p>
+      <img src="./asset/image/pediatre.png" alt="">
       <button  class="button_services">En savoir plus</button>
     </div>
-
   </div>
-
     </section>
-
     <!-- deuxième section  -->
-   <section class="première" >
-    <div class="section_div" >
+     
+  <section class="première " >
+    <div class="section_div mt-8" >
       <div class="ome" >
-        <h1 class="titre">Cas d'urgence</h1>
-        <ul class="liste_section2">
+        <h1 class="titre mt-2 ">Cas d'urgence</h1>
+        <ul class="liste_section2 m-10">
           <li>Accident vasculaire cérébral (AVC) </li>
           <li>Douleur thoracique aiguë </li>
           <li>Crise d'asthme</li>
@@ -113,8 +109,27 @@
         </ul>
       </div>
       <img class="img_p" src="./asset/image/pulse-line.svg" alt="">
-      <div class="ome">
-        <h1 class="titre">Horaire des médecins</h1>
+      <div class="ome p-5 ">
+        <h1 class="titre mb-2">Horaire des médecins</h1>
+        <p class="text-xs ">Dr Guy NDOUTOUME OBAME
+          -Lundi : 8h00 -
+          -Mardi :9h
+          -Mercredi: 8h
+          -Jeudi: 9h
+          -Vendredi : 8h00 
+          </p>
+          <p class="text-xs">Dr Guy NDOUTOUME OBAME
+            -Lundi : 8h00 -
+            -Mardi :9h
+            -Mercredi: 8h
+            -Jeudi: 9h
+            -Vendredi : 8h00 
+            </p>
+            <p class="text-xs ">Docteur Sophie Laurent MATAMBA
+              -Mardi: 9
+              -Mercredi : 8h00 - 12h00 
+              -Jeudi : 9h
+              -Vendredi: 8h</p>
       </div>
       <img class="img_p" src="./asset/image/pulse-line.svg" alt="">
        <div class="ome">
@@ -126,8 +141,8 @@
         </ul>
       </div>
     </div>
-    </section>
-    <section>
+  </section>
+ <section>
 
     <img class="doc" src="./asset/image/chir.jpg" alt="">
   </section>
@@ -164,6 +179,7 @@
         </div>
     </div>
     </footer>
+    <script src="./index.js"></script>
    
   </body>
 </html> 
