@@ -125,17 +125,22 @@ video {
   text-align: center;
   padding: 20px;
 }
+
+  .container{
+    position: relative;
+    bottom: 850px;
+   
+  }
   .imagecontenaire{
     display: flex;
-    height: 300px;
-    
+    height: 650px;
     padding: 100px;
     background-color: #000000b9;
   }
   .img{
     width: 80%;
     height: 200px;
-    margin-top: 45px;
+    margin-top: 200px;
     position: relative;
     left: 60px;
     animation-duration: 20s;
