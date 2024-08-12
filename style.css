@@ -117,17 +117,33 @@ nav .link {
 /* titre h1  */
 
 .titre {
+  font-size: 25px;
+  margin: 20px;
+  color: #007bff;
+}
+
+.docteur{
   font-size: 18px;
+  margin-top: 30px;
 }
 
 /* parent div  */
 
 .ome {
   margin: auto;
-  background-color: #af4d4d;
-  height: 500px;
+  background-color: #000000a2;
+  height: 400px;
   width: 25%;
-  border-radius: 8px;
+  border-radius: 16px;
+  color: #fff;
+  box-shadow: 2px 2px 2px 3px #06b13663;
+  animation: reveal linear;
+  animation-timeline: view();
+  animation-range-start: cover 0%;
+  animation-range-end: contain 50%;
+}
+.ome:hover{
+    box-shadow: 2px 2px 2px 3px #007bff;
 }
 
 
@@ -136,8 +152,10 @@ nav .link {
 
 .liste {
   display: flex;
+  flex-direction: column;
   list-style: none;
-  text-align: center;
+  padding: 20px;
+
 }
 
 .img_p {
@@ -264,19 +282,24 @@ img{
   margin: auto;
   display: flex;
   justify-content: center;
-  font-size: 18px;
-  border: 1px solid #000;
+  font-size: 20px;
+  border: 1px solid #14b256e5;
   width: 195px;
   border-radius: 25px;
   margin-top: 20px;
   padding: 5px;
   align-items: center;
   background-color: #14b25646;
+  animation: reveal linear;
+  animation-timeline: view();
+  animation-range-start: cover 0%;
+  animation-range-end: contain 50%;
 }
 
 .titre1:hover {
   background-color: #000;
   color: #fff;
+  border: 1px solid #000;
 }
 
 /* button de la première section  */
@@ -325,14 +348,18 @@ hr {
   display: flex;
   width: 195px;
   border-radius: 25px;
-  border: 1px solid #000;
+  border: 1px solid #14b256e5;
   padding: 5px;
   justify-content: center;
   position: relative;
   left: 570px;
   bottom: 40px;
-  font-size: 18px;
+  font-size: 20px;
   background-color: #14b25646;
+  animation: reveal linear;
+  animation-timeline: view();
+  animation-range-start: cover 0%;
+  animation-range-end: contain 50%;
 }
 
 /* .text_services  */
@@ -354,6 +381,10 @@ hr {
   padding: 3%;
   border-radius: 25px;
   box-shadow: 2px 2px 2px 2px #000000;
+  animation: reveal linear;
+  animation-timeline: view();
+  animation-range-start: cover 0%;
+  animation-range-end: cover 50%;
 }
 .parent_section:hover{
   box-shadow: 2px 2px 2px 2px #06b136;
@@ -443,6 +474,7 @@ h6 {
 .titre2:hover {
   background-color: #000;
   color: #fff;
+  border: 1px solid #000;
 }
 
 .rendez {
@@ -463,12 +495,12 @@ button:hover {
   height: 600px;
   width: 100%; 
   justify-content: center;
-  background-color: #00000006;
+  background-color: #00000082;
 
 }
 
 .liste_section2{
-  font-size: 24px;
+  font-size: 20px;
   justify-content: center;
   list-style: none;
   color: #fff;
@@ -479,7 +511,53 @@ button:hover {
 .doc {
   width: 100%;
   height: 800px;
-  margin-top: 200px;
+  margin-top: px;
+}
+
+.titre_2{
+  display: flex;
+  width: 195px;
+  border-radius: 25px;
+  border: 1px solid #14b256e5;
+  padding: 5px;
+  justify-content: center;
+  position: relative;
+  left: 570px;
+  bottom: 700px;
+  font-size: 20px;
+  background-color: #14b256e5;
+  animation: reveal linear;
+  animation-timeline: view();
+  animation-range-start: cover 0%;
+  animation-range-end: contain 50%;
+}
+
+/* image de la section 3 */
+
+.parent_med{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 650px;
+  gap: 50px;
+  background-color: #00000012;
+  height: 610px;
+  
+}
+.med{
+  width: 20%;
+  height: 400px;
+  box-shadow: 2px 2px 2px 3px ;
+  border-radius: 25px;
+}
+.med:hover{
+    box-shadow: 2px 2px 2px 3px #06b136;
+}
+
+.titre_2:hover {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
 }
 
 /* partie form  */
@@ -613,6 +691,19 @@ footer {
 
 .im2{
   display: none;
+}
+
+
+
+@keyframes reveal{
+  from{
+    transform: scale(0);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @media  screen and (min-width: 393px) and (max-width: 480px){

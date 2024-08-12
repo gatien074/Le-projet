@@ -125,8 +125,41 @@ video {
   text-align: center;
   padding: 20px;
 }
+  .imagecontenaire{
+    display: flex;
+    height: 300px;
+    
+    padding: 100px;
+    background-color: #000000b9;
+  }
+  .img{
+    width: 80%;
+    height: 200px;
+    margin-top: 45px;
+    position: relative;
+    left: 60px;
+    animation-duration: 20s;
+    animation: rotation 20s linear infinite; 
+    animation-name: imagecontenaire;
+    border-radius: 15px; 
+    overflow: auto;
+  
+  }
 
-
+  @keyframes rotation {
+    from {
+      transform: rotateX(0deg);
+    }
+    to {
+      transform: rotateX(360deg);
+    }
+  }
+  
+  .animated-rotation {
+   /* Nécessaire pour que la transformation fonctionne correctement */
+    animation: rotation 20s linear infinite; /* 2s pour la durée, linear pour le timing, infinite pour la répétition */
+  }
+  
 
 
 
