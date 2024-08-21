@@ -1,9 +1,5 @@
 /* reset.css */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
   margin: 0;
   padding: 0;
@@ -41,6 +37,71 @@ nav {
   /* border-bottom:  1px solid #000; */
   background-color: rgba(255, 255, 255, 0.948);
 }
+
+/* dashboard nave  */
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+  display: flex;
+  font-family: "roboto mono";
+  font-size: 15px;
+  margin-right: 45px;
+  font-weight: bold;
+  margin: 5px;
+  align-items: center;
+}
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: #0056b3;
+  padding: 5px 8px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  cursor: pointer;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 5px 8px;
+  text-decoration: none;
+}
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #ddd;
+  color: #06b136;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.content {
+  padding: 10px;
+}
+
+
+
 
 /* logo  */
 
@@ -120,6 +181,7 @@ nav .link {
   font-size: 25px;
   margin: 20px;
   color: #007bff;
+  margin-top: 50px;
 }
 
 .docteur{
@@ -141,6 +203,7 @@ nav .link {
   animation-timeline: view();
   animation-range-start: cover 0%;
   animation-range-end: contain 50%;
+  padding: 14px;
 }
 .ome:hover{
     box-shadow: 2px 2px 2px 3px #007bff;
@@ -268,6 +331,7 @@ button {
   display: flex;
   flex-direction: column;
   background-color: #00000079;
+  
 }
 
 /* image première section  */
@@ -704,6 +768,7 @@ footer {
     transform: scale(1);
     opacity: 1;
   }
+  
 }
 
 @media  screen and (min-width: 393px) and (max-width: 480px){
@@ -711,6 +776,7 @@ footer {
     display: none;
   }
 
+  
   .link .none .dashboard{
     display: none;
   }
@@ -743,4 +809,6 @@ footer {
     position: relative;
     bottom: 80px;
   }
+ 
+ 
 } 
